@@ -1,19 +1,20 @@
-FROM phusion/baseimage:0.9.13
+FROM phusion/baseimage:0.9.15
 
 ENV HOME /root
+
+RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 CMD ["/sbin/my_init"]
 
 RUN apt-get update
 RUN apt-get install -y avahi-utils
 
-RUN curl -s "https://downloads.plex.tv/plex-media-server/0.9.9.14.531-7eef8c6/plexmediaserver_0.9.9.14.531-7eef8c6_amd64.deb" > /tmp/plex.deb
+RUN curl -s "https://downloads.plex.tv/plex-media-server/0.9.11.4.739-a4e710f/plexmediaserver_0.9.11.4.739-a4e710f_amd64.deb" > /tmp/plex.deb
 RUN dpkg -i /tmp/plex.deb
+
+ADD plexmediaserver /etc/default/plexmediaserver
 
 RUN mkdir /etc/service/plex
 ADD plex.sh /etc/service/plex/run
-
-VOLUME /plex
-VOLUME /media
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -7,11 +7,11 @@ Plex Media Server uses Avahi and GDM for network discovery, and so generally doe
 
 The simplest way to make it just work is to use docker's "host" network mode. I run with:
 
-    docker run \
+    docker run -d \
     --net="host" \
     -v /path/to/media:/media \
     -v /path/to/plex:/plex \
-    -d -t akursar/plex
+    akursar/plex
 
 Alternatively, you can create your own bridge to run docker in the same subnet as your host.
 
@@ -35,7 +35,7 @@ I've done this by creating a br0 device on my host and addign my eth0 to it with
 
 And then by running my image with a specific IP:
 
-    docker run \
+    docker run -d \
     -n=false \
     --lxc-conf="lxc.network.type = veth" \
     --lxc-conf="lxc.network.ipv4 = 192.168.1.150/24" \
@@ -45,6 +45,6 @@ And then by running my image with a specific IP:
     --lxc-conf="lxc.network.flags = up" \
     -v /mnt/tb/media:/media \
     -v /mnt/tb/plex:/plex \
-    -d -t akursar/plex
+    akursar/plex
 
 Note that this requires running docker with the lxc exec env.
