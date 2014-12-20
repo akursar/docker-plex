@@ -1,7 +1,6 @@
 # Minimal docker image for running Plex Media Server
 
 - Built on baseimage-docker
-- Expects media (/media) and config (/plex) to be mounted as data volumes from host directories
 
 Plex Media Server uses Avahi and GDM for network discovery, and so generally doesn't work well in docker.
 
@@ -9,8 +8,6 @@ The simplest way to make it just work is to use docker's "host" network mode. I 
 
     docker run -d \
     --net="host" \
-    -v /path/to/media:/media \
-    -v /path/to/plex:/plex \
     akursar/plex
 
 Alternatively, you can create your own bridge to run docker in the same subnet as your host.
@@ -43,8 +40,8 @@ And then by running my image with a specific IP:
     --lxc-conf="lxc.network.link = br0" \
     --lxc-conf="lxc.network.name = eth0" \
     --lxc-conf="lxc.network.flags = up" \
-    -v /mnt/tb/media:/media \
-    -v /mnt/tb/plex:/plex \
     akursar/plex
 
 Note that this requires running docker with the lxc exec env.
+
+PMS is configured to use /var/lib/plexmediaserver for its metadata. To persist this data, you may want to consider using a [Data Volume Container](https://docs.docker.com/userguide/dockervolumes/#creating-and-mounting-a-data-volume-container) for this location.
