@@ -9,7 +9,7 @@ CMD ["/sbin/my_init"]
 RUN apt-get update
 RUN apt-get install -y avahi-utils
 
-RUN curl -s "https://downloads.plex.tv/plex-media-server/0.9.11.4.739-a4e710f/plexmediaserver_0.9.11.4.739-a4e710f_amd64.deb" > /tmp/plex.deb
+RUN curl -s "https://downloads.plex.tv/plex-media-server/0.9.11.7.803-87d0708/plexmediaserver_0.9.11.7.803-87d0708_amd64.deb" -o /tmp/plex.deb
 RUN dpkg -i /tmp/plex.deb
 
 ADD plexmediaserver /etc/default/plexmediaserver
