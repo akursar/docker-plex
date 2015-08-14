@@ -1,11 +1,11 @@
-FROM phusion/baseimage:0.9.16
+FROM phusion/baseimage:0.9.17
 
 CMD ["/sbin/setuser", "plex", "/usr/sbin/start_pms"]
 
 RUN \
   apt-get update && \
   apt-get install -y avahi-utils && \
-  curl -s "https://downloads.plex.tv/plex-media-server/0.9.12.4.1192-9a47d21/plexmediaserver_0.9.12.4.1192-9a47d21_amd64.deb" -o /tmp/plex.deb && \
+  curl -s https://downloads.plex.tv/plex-media-server/0.9.12.8.1362-4601e39/plexmediaserver_0.9.12.8.1362-4601e39_amd64.deb -o /tmp/plex.deb && \
   dpkg -i /tmp/plex.deb && \
   apt-get autoremove -y && \
   apt-get clean && \
