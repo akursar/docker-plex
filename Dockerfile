@@ -5,7 +5,7 @@ CMD ["/usr/sbin/start_pms"]
 RUN \
   apt-get update && \
   apt-get install -y avahi-utils curl && \
-  curl -s -L https://downloads.plex.tv/plex-media-server/1.0.2.2413-7caf41d/plexmediaserver_1.0.2.2413-7caf41d_amd64.deb -o /tmp/plex.deb && \
+  curl -s -L https://downloads.plex.tv/plex-media-server/1.0.3.2461-35f0caa/plexmediaserver_1.0.3.2461-35f0caa_amd64.deb -o /tmp/plex.deb && \
   dpkg -i /tmp/plex.deb && \
   apt-get autoremove -y curl && \
   apt-get clean && \
