@@ -11,7 +11,7 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y curl && \
-  curl -s -L https://downloads.plex.tv/plex-media-server/1.12.2.4929-29f6d1796/plexmediaserver_1.12.2.4929-29f6d1796_amd64.deb -o /tmp/plex.deb && \
+  curl -s -L https://downloads.plex.tv/plex-media-server/1.12.3.4973-215c28d86/plexmediaserver_1.12.3.4973-215c28d86_amd64.deb -o /tmp/plex.deb && \
   dpkg -i /tmp/plex.deb && \
   apt-get autoremove -y curl && \
   apt-get clean && \
