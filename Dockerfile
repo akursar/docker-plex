@@ -11,7 +11,7 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y curl && \
-  curl -s -L https://downloads.plex.tv/plex-media-server-new/1.16.6.1592-b9d49bdb7/debian/plexmediaserver_1.16.6.1592-b9d49bdb7_amd64.deb -o /tmp/plex.deb && \
+  curl -s -L https://downloads.plex.tv/plex-media-server-new/1.17.0.1709-982421575/debian/plexmediaserver_1.17.0.1709-982421575_amd64.deb -o /tmp/plex.deb && \
   dpkg -i /tmp/plex.deb && \
   apt-get autoremove -y curl && \
   apt-get clean && \
