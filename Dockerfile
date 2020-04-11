@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-CMD ["/usr/sbin/start_pms"]
+CMD ["/usr/lib/plexmediaserver/Plex\ Media\ Server"]
 
 RUN \
   apt-get update && \
